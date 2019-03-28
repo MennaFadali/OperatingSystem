@@ -1,22 +1,20 @@
-
 import java.util.Date;
 
-public abstract class Process {
-    static int created = 0;
+public abstract class Process implements Runnable {
     int pid;
     String state;
     boolean critical;
-    int duration;
 
-    public Process(int pid, boolean critical, int duration) {
-        this.pid = ++created;
+    public Process(int pid, boolean critical) {
+        this.pid = pid;
         this.critical = critical;
-        this.duration = duration;
         state = "new";
         if (critical) Scheduler.critical.add(this);
         else Scheduler.noncritical.add(this);
         state = "ready";
+        System.out.println("The process with id " + pid + " is created and it was added to the " + (critical ? "critical" : "non-critical") + " queue at time " + (new Date()));
     }
-    abstract void run();
+
+    public abstract void run();
 
 }
