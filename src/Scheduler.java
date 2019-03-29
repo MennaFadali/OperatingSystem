@@ -13,6 +13,8 @@ public class Scheduler implements Runnable {
 
     @Override
     public void run() {
+        critical.add(new App1(-1));
+        noncritical.add(new App2(-1, 0, 0));
         System.out.println("The Scheduler is Up and Running");
         while (true) {
             Process cur = null;
@@ -21,6 +23,7 @@ public class Scheduler implements Runnable {
             else
                 cur = noncritical.poll();
             if (cur != null) {
+                if (cur.pid==-1) continue;
                 cur.state = "running";
                 System.out.println("Process with id " + cur.pid + " is starting its execution at time " + new Date());
                 cur.run();

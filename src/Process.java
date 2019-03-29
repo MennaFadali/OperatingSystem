@@ -12,7 +12,8 @@ public abstract class Process implements Runnable {
         if (critical) Scheduler.critical.add(this);
         else Scheduler.noncritical.add(this);
         state = "ready";
-        System.out.println("The process with id " + pid + " is created and it was added to the " + (critical ? "critical" : "non-critical") + " queue at time " + (new Date()));
+        if (pid != -1)
+            System.out.println("The process with id " + pid + " is created and it was added to the " + (critical ? "critical" : "non-critical") + " queue at time " + (new Date()));
     }
 
     public abstract void run();
