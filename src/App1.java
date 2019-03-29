@@ -1,7 +1,8 @@
+import javax.sound.sampled.*;
 import javax.swing.*;
-import java.applet.AudioClip;
 import java.awt.*;
 import java.io.File;
+import java.io.IOException;
 
 
 public class App1 extends Process {
@@ -13,12 +14,10 @@ public class App1 extends Process {
     JFrame frame;
     JPanel panel;
     JLabel label;
-//    private AudioClip sound;
-//    private File wavFile = new File("siren.wav");
+    Clip clip;
 
-    public App1(int id ) {
+    public App1(int id) {
         super(id, true);
-
         frame = new JFrame();
         panel = new JPanel();
         panel.setLayout(new BorderLayout());
@@ -27,27 +26,33 @@ public class App1 extends Process {
         panel.add(label, BorderLayout.CENTER);
         label.setForeground(black);
         frame.setSize(new Dimension(1000, 1000));
-//        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setLocation(500,500);
+        File yourFile = new File("siren.wav");
+        AudioInputStream stream;
+        AudioFormat format;
+        DataLine.Info info;
+        try {
+            stream = AudioSystem.getAudioInputStream(yourFile);
+            format = stream.getFormat();
+            info = new DataLine.Info(Clip.class, format);
+            clip = (Clip) AudioSystem.getLine(info);
+            clip.open(stream);
+        } catch (UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (LineUnavailableException e) {
+            e.printStackTrace();
+        }
         frame.setContentPane(panel);
     }
 
 
-//    public AudioClip getSound() {
-//        return sound;
-//    }
-
-
-    //    @Override
+    @Override
     public void run() {
-//        try {
-//            sound = Applet.newAudioClip(wavFile.toURL());
-//            sound.play();
-//        } catch (Exception e1) {
-//            e1.printStackTrace();
-//        }
-
         panel.setBackground(red);
         int cnt = 0;
+        clip.start();
         frame.setVisible(true);
         while (cnt < 30) {
             try {
@@ -64,7 +69,7 @@ public class App1 extends Process {
             }
             cnt++;
         }
-        sound.stop();
+        clip.stop();
         frame.dispose();
     }
 }
