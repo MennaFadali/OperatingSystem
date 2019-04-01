@@ -6,10 +6,10 @@ public class App2 extends Process {
     int x, y;
     JFrame frame;
 
-    public App2(int pid, int one, int two) {
+    public App2(int pid) {
         super(pid, false);
-        x = one;
-        y = two;
+        x = (OSApp.dataMemory[pid*2]==null?0:OSApp.dataMemory[pid*2]);
+        y = (OSApp.dataMemory[pid*2+1]==null?0:OSApp.dataMemory[pid*2+1]);
     }
 
 
