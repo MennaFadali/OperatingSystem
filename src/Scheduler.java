@@ -10,6 +10,7 @@ public class Scheduler implements Runnable {
     static Queue<Process> noncritical;
     static File file;
     static PrintWriter out;
+
     Scheduler() throws FileNotFoundException {
         critical = new LinkedList<>();
         noncritical = new LinkedList<>();
@@ -22,27 +23,33 @@ public class Scheduler implements Runnable {
         System.out.println("The Scheduler is Up and Running");
         critical = new LinkedList<>();
         noncritical = new LinkedList<>();
-        int i=0;
+        int i = 0;
         Process cur = null;
         while (true) {
-            if(i==0) {
+            if (i == 0) {
                 System.out.print("");
             }
             i++;
-            if (!critical.isEmpty()){
-                cur = critical.poll();}
-            else if (!noncritical.isEmpty()) {cur = noncritical.poll();}
+            if (!critical.isEmpty()) {
+                cur = critical.poll();
+            } else if (!noncritical.isEmpty()) {
+                cur = noncritical.poll();
+            }
             if (cur != null) {
                 if (cur.pid == 0) continue;
                 cur.state = "running";
-                out.println("Process with id " + cur.pid + " is starting its execution at time " + new Date());
+                Date start = new Date();
+                out.println("Process with id " + cur.pid + " is starting its execution at time " + start);
+                OSApp.processlog.setText(OSApp.processlog.getText() + "\n" + "Process with id " + cur.pid + " is starting its execution at time " + start);
                 cur.run();
                 cur.state = "finished";
-                if(!cur.critical) {
+                if (!cur.critical) {
                     OSApp.deallocateMemory(cur.pid);
                     cur.memAccess += 2;
                 }
-                out.println("Process with id " + cur.pid + " just finished its execution at time " + new Date());
+                Date finish = new Date();
+                OSApp.processlog.setText(OSApp.processlog.getText() + "\n" + "Process with id " + cur.pid + " just finished its execution at time " + finish);
+                out.println("Process with id " + cur.pid + " just finished its execution at time " + finish);
                 cur = null;
                 out.flush();
             }

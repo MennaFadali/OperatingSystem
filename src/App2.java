@@ -10,10 +10,11 @@ public class App2 extends Process {
         super(pid, false);
         x = (OSApp.dataMemory[pid*2]==null?0:OSApp.dataMemory[pid*2]);
         Scheduler.out.println("The process with id : "+this.pid +" just accessed the memory!");
+        OSApp.memorylog.setText(OSApp.memorylog.getText()+"\n"+"The process with id : "+this.pid +" just accessed the memory!");
         y = (OSApp.dataMemory[pid*2+1]==null?0:OSApp.dataMemory[pid*2+1]);
         Scheduler.out.println("The process with id : "+this.pid +" just accessed the memory!");
+        OSApp.memorylog.setText(OSApp.memorylog.getText()+"\n"+"The process with id : "+this.pid +" just accessed the memory!");
         this.memAccess += 2;
-
         Scheduler.out.flush();
 
     }
@@ -30,6 +31,5 @@ public class App2 extends Process {
         frame.setSize(2000, 2000);
         res.setText("                                                             " + (x + y));
         frame.setVisible(true);
-//        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 }
