@@ -18,15 +18,21 @@ public class App1 extends Process {
 
     public App1(int id) {
         super(id, true);
+    }
+
+
+    @Override
+    public void run() {
+
         frame = new JFrame();
         panel = new JPanel();
         panel.setLayout(new BorderLayout());
-        label = new JLabel("                      RUNN");
+        label = new JLabel("                      RUNN " + this.pid);
         label.setFont(font);
         panel.add(label, BorderLayout.CENTER);
         label.setForeground(black);
         frame.setSize(new Dimension(1000, 1000));
-        frame.setLocation(500,500);
+        frame.setLocation(500, 500);
         File yourFile = new File("siren.wav");
         AudioInputStream stream;
         AudioFormat format;
@@ -45,11 +51,6 @@ public class App1 extends Process {
             e.printStackTrace();
         }
         frame.setContentPane(panel);
-    }
-
-
-    @Override
-    public void run() {
         panel.setBackground(red);
         int cnt = 0;
         clip.start();
