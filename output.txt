@@ -1,48 +1,10 @@
-The process with id : 827879 just accessed the memory!
-The process with id 827879 is created and it was added to the critical queue at time Sun Apr 21 12:13:22 EET 2019
-Process with id 827879 is starting its execution at time Sun Apr 21 12:13:22 EET 2019
-The process with id : 764250 just accessed the memory!
-The process with id : 764250 just accessed the memory!
-The process with id : 764250 just accessed the memory!
-The process with id 764250 is created and it was added to the non-critical queue at time Sun Apr 21 12:13:26 EET 2019
-The process with id : 764250 just accessed the memory!
-The process with id : 764250 just accessed the memory!
-The process with id : 152447 just accessed the memory!
-The process with id 152447 is created and it was added to the critical queue at time Sun Apr 21 12:13:26 EET 2019
-The process with id : 685335 just accessed the memory!
-The process with id : 685335 just accessed the memory!
-The process with id : 685335 just accessed the memory!
-The process with id 685335 is created and it was added to the non-critical queue at time Sun Apr 21 12:13:28 EET 2019
-The process with id : 685335 just accessed the memory!
-The process with id : 685335 just accessed the memory!
-The process with id : 892012 just accessed the memory!
-The process with id : 892012 just accessed the memory!
-The process with id : 892012 just accessed the memory!
-The process with id 892012 is created and it was added to the non-critical queue at time Sun Apr 21 12:13:29 EET 2019
-The process with id : 892012 just accessed the memory!
-The process with id : 892012 just accessed the memory!
-The process with id : 949988 just accessed the memory!
-The process with id : 949988 just accessed the memory!
-The process with id : 949988 just accessed the memory!
-The process with id 949988 is created and it was added to the non-critical queue at time Sun Apr 21 12:13:29 EET 2019
-The process with id : 949988 just accessed the memory!
-The process with id : 949988 just accessed the memory!
-Process with id 827879 just finished its execution at time Sun Apr 21 12:13:29 EET 2019
-Process with id 152447 is starting its execution at time Sun Apr 21 12:13:29 EET 2019
-Process with id 152447 just finished its execution at time Sun Apr 21 12:13:35 EET 2019
-Process with id 764250 is starting its execution at time Sun Apr 21 12:13:35 EET 2019
-The process with id : 764250 just accessed the memory!
-The process with id : 764250 just accessed the memory!
-Process with id 764250 just finished its execution at time Sun Apr 21 12:13:35 EET 2019
-Process with id 685335 is starting its execution at time Sun Apr 21 12:13:35 EET 2019
-The process with id : 685335 just accessed the memory!
-The process with id : 685335 just accessed the memory!
-Process with id 685335 just finished its execution at time Sun Apr 21 12:13:35 EET 2019
-Process with id 892012 is starting its execution at time Sun Apr 21 12:13:35 EET 2019
-The process with id : 892012 just accessed the memory!
-The process with id : 892012 just accessed the memory!
-Process with id 892012 just finished its execution at time Sun Apr 21 12:13:35 EET 2019
-Process with id 949988 is starting its execution at time Sun Apr 21 12:13:35 EET 2019
-The process with id : 949988 just accessed the memory!
-The process with id : 949988 just accessed the memory!
-Process with id 949988 just finished its execution at time Sun Apr 21 12:13:35 EET 2019
+The process with id : 82118 just accessed the memory!
+The process with id : 82118 just accessed the memory!
+The process with id : 82118 just accessed the memory!
+The process with id 82118 is created and it was added to the non-critical queue at time Sun Apr 21 12:18:04 EET 2019
+The process with id : 82118 just accessed the memory!
+The process with id : 82118 just accessed the memory!
+Process with id 82118 is starting its execution at time Sun Apr 21 12:18:04 EET 2019
+The process with id : 82118 just accessed the memory!
+The process with id : 82118 just accessed the memory!
+Process with id 82118 just finished its execution at time Sun Apr 21 12:18:04 EET 2019

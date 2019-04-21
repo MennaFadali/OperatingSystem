@@ -55,7 +55,7 @@ public class App1 extends Process {
         int cnt = 0;
         clip.start();
         frame.setVisible(true);
-        while (cnt < 15) {
+        while (cnt < 30) {
             try {
                 Thread.sleep(400);
             } catch (InterruptedException e) {

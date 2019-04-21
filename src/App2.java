@@ -28,8 +28,9 @@ public class App2 extends Process {
         frame.setLayout(new BorderLayout());
         res.setSize(999, 999);
         res.setFont(font);
-        frame.setSize(2000, 2000);
-        res.setText("                                                             " + (x + y));
+        frame.setLocation(400,400);
+        frame.setSize(new Dimension(500,500));
+        res.setText("          " + (x + y));
         frame.setVisible(true);
     }
 }
