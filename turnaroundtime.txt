@@ -1,0 +1,7 @@
+Turn Around Time
+Process with id 827879: 6.444 seconds
+Process with id 152447: 8.444 seconds
+Process with id 764250: 9.133 seconds
+Process with id 685335: 6.685 seconds
+Process with id 892012: 6.467 seconds
+Process with id 949988: 6.281 seconds

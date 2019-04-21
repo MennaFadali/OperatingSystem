@@ -2,7 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.*;
 import java.util.Date;
 
 public class OSApp extends JFrame {
@@ -21,7 +23,32 @@ public class OSApp extends JFrame {
         Thread mainthread = new Thread(s);
         mainthread.start();
         this.setSize(size);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                JFrame frame = new JFrame();
+                frame.setBackground(Color.white);
+                double CPU = Scheduler.executing / ((new Date().getTime() - Scheduler.start.getTime()) / 1000.0)*100;
+                JTextArea text = new JTextArea();
+                text.setEditable(false);
+                text.setLineWrap(true);
+                text.setFont(new Font("", Font.BOLD, 30));
+                text.setForeground(Color.green);
+                StringBuilder sb = new StringBuilder();
+                try {
+                    BufferedReader br = new BufferedReader(new FileReader(new File("turnaroundtime.txt")));
+                    while (br.ready())
+                        sb.append(br.readLine() + "\n");
+                    sb.append("\n\nCPU Utilization : " + CPU + " %");
+                    text.setText(sb.toString());
+                } catch (FileNotFoundException e1) {
+                } catch (IOException e1) {
+                }
+                frame.setSize(new Dimension(1000, 1000));
+                frame.add(text);
+                frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                frame.setVisible(true);
+            }
+        });
         JPanel panel = new JPanel();
         panel.setBackground(Color.lightGray);
         panel.setLayout(new GridLayout(2, 2));

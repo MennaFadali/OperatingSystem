@@ -9,13 +9,20 @@ public class Scheduler implements Runnable {
     static Queue<Process> critical;
     static Queue<Process> noncritical;
     static File file;
+    static PrintWriter ttfile;
     static PrintWriter out;
+    static Date start;
+    static double executing;
 
     Scheduler() throws FileNotFoundException {
         critical = new LinkedList<>();
         noncritical = new LinkedList<>();
         file = new File("output.txt");
         out = new PrintWriter(file);
+        ttfile = new PrintWriter(new File("turnaroundtime.txt"));
+        ttfile.write("Turn Around Time");
+        start = new Date();
+
     }
 
     @Override
@@ -50,6 +57,10 @@ public class Scheduler implements Runnable {
                 Date finish = new Date();
                 OSApp.processlog.setText(OSApp.processlog.getText() + "\n" + "Process with id " + cur.pid + " just finished its execution at time " + finish);
                 out.println("Process with id " + cur.pid + " just finished its execution at time " + finish);
+                executing += (finish.getTime() - start.getTime()) / 1000.0;
+                long diff = finish.getTime() - cur.begin.getTime();
+                ttfile.write("\nProcess with id " + cur.pid + ": " + (diff / 1000.0) + " seconds");
+                ttfile.flush();
                 cur = null;
                 out.flush();
             }
