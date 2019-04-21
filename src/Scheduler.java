@@ -13,12 +13,16 @@ public class Scheduler implements Runnable {
     static PrintWriter out;
     static Date start;
     static double executing;
+    static File graph;
+    static PrintWriter outG;
 
     Scheduler() throws FileNotFoundException {
         critical = new LinkedList<>();
         noncritical = new LinkedList<>();
         file = new File("output.txt");
         out = new PrintWriter(file);
+        graph = new File("graph.csv");
+        outG = new PrintWriter(graph);
         ttfile = new PrintWriter(new File("turnaroundtime.txt"));
         ttfile.write("Turn Around Time");
         start = new Date();
@@ -43,9 +47,13 @@ public class Scheduler implements Runnable {
                 cur = noncritical.poll();
             }
             if (cur != null) {
+//            	outG.println((new Date()).getTime()%1000000 +", 0");
+                outG.println((System.nanoTime()%100000000000000L)/1000+",0");
                 if (cur.pid == 0) continue;
                 cur.state = "running";
                 Date start = new Date();
+
+                outG.println((System.nanoTime()%100000000000000L)/1000+",1");
                 out.println("Process with id " + cur.pid + " is starting its execution at time " + start);
                 OSApp.processlog.setText(OSApp.processlog.getText() + "\n" + "Process with id " + cur.pid + " is starting its execution at time " + start);
                 cur.run();
@@ -55,6 +63,8 @@ public class Scheduler implements Runnable {
                     cur.memAccess += 2;
                 }
                 Date finish = new Date();
+
+                outG.println((System.nanoTime()%100000000000000L)/1000+",1");
                 OSApp.processlog.setText(OSApp.processlog.getText() + "\n" + "Process with id " + cur.pid + " just finished its execution at time " + finish);
                 out.println("Process with id " + cur.pid + " just finished its execution at time " + finish);
                 executing += (finish.getTime() - start.getTime()) / 1000.0;
@@ -63,6 +73,13 @@ public class Scheduler implements Runnable {
                 ttfile.flush();
                 cur = null;
                 out.flush();
+
+                outG.println((System.nanoTime()%100000000000000L)/1000+",0");
+//                outG.println(start.getTime()%1000000 +", 1");
+//                outG.println(finish.getTime()%1000000 +", 1");
+//                outG.println((new Date()).getTime()%1000000 +", 0");
+                outG.flush();
+
             }
         }
 

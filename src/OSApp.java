@@ -27,8 +27,8 @@ public class OSApp extends JFrame {
             public void windowClosing(WindowEvent e) {
                 JFrame frame = new JFrame();
                 frame.setBackground(Color.white);
-                frame.setLocation(400,50);
-                double CPU = Scheduler.executing / ((new Date().getTime() - Scheduler.start.getTime()) / 1000.0)*100;
+                frame.setLocation(400, 50);
+                double CPU = Scheduler.executing / ((new Date().getTime() - Scheduler.start.getTime()) / 1000.0) * 100;
                 JTextArea text = new JTextArea();
                 text.setEditable(false);
                 text.setLineWrap(true);

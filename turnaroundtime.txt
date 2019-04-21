@@ -1,2 +1,4 @@
 Turn Around Time
-Process with id 82118: 0.09 seconds
+Process with id 244760: 13.2 seconds
+Process with id 793208: 14.762 seconds
+Process with id 554826: 24.224 seconds
